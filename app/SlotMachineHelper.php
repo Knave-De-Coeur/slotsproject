@@ -24,30 +24,25 @@ class SlotMachineHelper
 
     public static function FindAndReturnPaylines($slotMachineFaces)
     {
-        $payline1 = [0,3,6,9,12];
+        $tests = [
+            [0,3,6,9,12],
+            [1,4,7,10,13],
+            [2,5,8,11,14],
+            [0,4,8,10,12],
+            [2,4,6,10,14]
+        ];
 
-        $paylineMatches1 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline1, 1, '');
+        $paylines = [];
 
+        foreach ($tests as $test)
+        {
+            $paylineMatches = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $test, 1, '');
 
-
-        $payline2 = [1,4,7,10,13];
-
-        $paylineMatches2 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline2, 1, '');
-
-        $payline3 = [2,5,8,11,14];
-
-        $paylineMatches3 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline3, 1, '');
-
-        $payline4 = [0,4,8,10,12];
-
-        $paylineMatches4 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline4, 1, '');
-
-        $payline5 = [2,4,6,10,14];
-
-        $paylineMatches5 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline5, 1, '');
-
-
-        $paylines = [$paylineMatches1, $paylineMatches2, $paylineMatches3, $paylineMatches4, $paylineMatches5];
+            if($paylineMatches >= 3)
+            {
+                $paylines[$paylineMatches] = $test;
+            }
+        }
 
         return $paylines;
     }
@@ -111,7 +106,7 @@ class SlotMachineHelper
 
         foreach ($paylinesFound as $matchSize)
         {
-            switch ($matchSize)
+            switch (count($matchSize))
             {
                 case PayoutStatus::ThreeSybols:
                     $totalWin += $betAmount*0.2;

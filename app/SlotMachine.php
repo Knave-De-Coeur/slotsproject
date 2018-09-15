@@ -105,7 +105,7 @@ class SlotMachine
             array(1 => "Dog", 4 => "Cherry",7 => "Bar", 10 => "DoubleBar", 13 => "Cat"),
             array(2 => "Double Bar", 5 => "Cherry", 8 => "Cherry", 11 => "Double Bar", 14 => "Bird"),
         );
-        return $slotReels;
+        return $slotReels2;
 
     }
 

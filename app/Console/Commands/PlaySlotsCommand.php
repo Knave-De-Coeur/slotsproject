@@ -50,14 +50,14 @@ class PlaySlotsCommand extends Command
 
         $slotMachine->setPaylines(SlotMachineHelper::FindAndReturnPaylines($reels));
 
-        if(sizeof($slotMachine->getPaylines()) < 1)
+        if(count($slotMachine->getPaylines()) < 1)
         {
             $this->info('Nothing found');
             $slotMachine->setTotPayout(-100.00);
         }
         else
         {
-//            $this->table(' ', $slotMachine->getPaylines());
+            $this->table(' ', $slotMachine->getPaylines());
             $slotMachine->setTotPayout(SlotMachineHelper::GenerateAmountWon($slotMachine->getBetAmount(), $slotMachine->getPaylines()));
         }
 
