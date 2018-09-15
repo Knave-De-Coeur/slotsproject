@@ -26,19 +26,28 @@ class SlotMachineHelper
     {
         $payline1 = [0,3,6,9,12];
 
-        $paylineMatches = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline1, 1, '');
+        $paylineMatches1 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline1, 1, '');
 
 
 
         $payline2 = [1,4,7,10,13];
+
+        $paylineMatches2 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline2, 1, '');
+
         $payline3 = [2,5,8,11,14];
+
+        $paylineMatches3 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline3, 1, '');
+
         $payline4 = [0,4,8,10,12];
+
+        $paylineMatches4 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline4, 1, '');
+
         $payline5 = [2,4,6,10,14];
 
+        $paylineMatches5 = self::RecursivelyCheckThroughSlotByPayline($slotMachineFaces, $payline5, 1, '');
 
-        $paylines = [
-            ["Dog", "Dog", "Dog", "Dog"],
-        ];
+
+        $paylines = [$paylineMatches1, $paylineMatches2, $paylineMatches3, $paylineMatches4, $paylineMatches5];
 
         return $paylines;
     }
@@ -65,7 +74,7 @@ class SlotMachineHelper
         {
             if (strcasecmp($prevSymbol, $currentSymbol) == 0)
             {
-                $matchesFound+= 1;
+                $matchesFound += 1;
             }
         }
 
@@ -76,7 +85,7 @@ class SlotMachineHelper
         {
             // continue the recursion
 
-            self::RecursivelyCheckThroughSlotByPayline($slotMachineFace, $payline, $matchesFound, $currentSymbol);
+            $matchesFound = self::RecursivelyCheckThroughSlotByPayline($slotMachineFace, $payline, $matchesFound, $currentSymbol);
         }
 
         // end recursion and return the amount of successful matches found in this payline.
@@ -100,9 +109,9 @@ class SlotMachineHelper
     {
         $totalWin = 0;
 
-        foreach ($paylinesFound as $payline)
+        foreach ($paylinesFound as $matchSize)
         {
-            switch (count($payline))
+            switch ($matchSize)
             {
                 case PayoutStatus::ThreeSybols:
                     $totalWin += $betAmount*0.2;

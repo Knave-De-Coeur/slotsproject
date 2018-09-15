@@ -57,7 +57,7 @@ class PlaySlotsCommand extends Command
         }
         else
         {
-            $this->table(' ', $slotMachine->getPaylines());
+//            $this->table(' ', $slotMachine->getPaylines());
             $slotMachine->setTotPayout(SlotMachineHelper::GenerateAmountWon($slotMachine->getBetAmount(), $slotMachine->getPaylines()));
         }
 
