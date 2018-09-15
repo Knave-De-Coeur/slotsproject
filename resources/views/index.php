@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Welcome to Slots Homepage!</h1>
+    <h1>Welcome to Slots!</h1>
     <div class="info">
         <p>The rules are simple, place your bet of 1 Euro (100 cents), click slot, then wait view the results in the table.</p>
         <p>The results are thus; </p>

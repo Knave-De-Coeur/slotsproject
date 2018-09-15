@@ -14,11 +14,3 @@
 $router->get('/', function () use ($router) {
     return view('index');
 });
-
-//$router->get('slot-machine', [
-//    'as' => 'slotmachine', 'uses' => 'SlotMachineController@index'
-//]);
-
-$router->put('slot-machine', [
-    'as' => 'slotmachine', 'uses' => 'SlotMachineController@index'
-]);
