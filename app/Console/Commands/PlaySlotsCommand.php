@@ -48,7 +48,7 @@ class PlaySlotsCommand extends Command
         // get paylines (if any)
         $this->info('paylines: ');
 
-        $slotMachine->setPaylines(SlotMachineHelper::FindPaylines($reels));
+        $slotMachine->setPaylines(SlotMachineHelper::FindAndReturnPaylines($reels));
 
         if(sizeof($slotMachine->getPaylines()) < 1)
         {

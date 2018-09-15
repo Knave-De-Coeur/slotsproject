@@ -92,11 +92,12 @@ class SlotMachine
             array_push($slotReels, $column);
         }
 
+        // tests
         $slotReels = array
         (
-            array("Cherry","Cherry","Diamond", "Monkey", "Monkey"),
-            array("Dog","Dog","Dog", "Dog", "Cat"),
-            array("Double Bar","Seven","Bar", "Double Bar", "Bird"),
+            array(0 => "Cherry",3 => "Cherry", 6 => "Cherry", 9 => "Monkey", 12 => "Bird"),
+            array(1 => "Dog", 4 => "Cherry",7 => "Bar", 10 => "DoubleBar", 13 => "Cat"),
+            array(2 => "Double Bar", 5 => "Cherry", 8 => "Cherry", 11 => "Double Bar", 14 => "Bird"),
         );
         return $slotReels;
 
