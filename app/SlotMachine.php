@@ -15,7 +15,7 @@ class SlotMachine
     protected $Reels = 5;
     protected $Rows = 3;
     // chose common faces found on slot machines and custom ones to amount to 10
-    protected $Faces = ['Cheery', 'Bar', 'Double Bar', 'Triple Bar', 'Diamond', 'Seven', 'Monkey', 'Dog', 'Cat', 'Bird'];
+    protected $Faces = ["Cheery", "Bar", "Double Bar", "Triple Bar", "Diamond", "Seven", "Monkey", "Dog", "Cat", "Bird"];
     // this will eventually hold the common
     protected $Paylines = array();
     protected $BetAmount;
@@ -70,30 +70,36 @@ class SlotMachine
     }
 
     // this will randomly generate the table of 'reels with the faces specified'
-    function GenerateReels()
+    public function GenerateReels()
     {
-        $slotReels = array();
+        $slotReels = array(
+            array(),
+            array(),
+            array()
+        );
 
-        // each row of the slot machine
-        for ($i = 0; $i < 3; $i++)
+        $indexOrder = 0;
+
+        // first we loop through the columns since we're assigning ascending values from top-bottom and then left-right
+        // column
+        for ($y = 0; $y < 3; $y++)
         {
-            $column = array();
+            // row
             // 5 results are pushed to a an array of columns that column is then pushed to
-            for ($j = 0; $j < 5; $j++)
+            for ($x = 0; $x < 5; $x++)
             {
                 $result = SlotMachineHelper::GenerateAndReturnReelFace($this->Faces);
 
-                array_push($column, $result);
+                $newSlotReel =  $result;
+
+                $slotReels[$y][$x] = $newSlotReel;
+
+                $indexOrder ++;
             }
-
-            // at this point the column should contain 5 results
-
-            // a row is created in the slot reel
-            array_push($slotReels, $column);
         }
 
         // tests
-        $slotReels = array
+        $slotReels2 = array
         (
             array(0 => "Cherry",3 => "Cherry", 6 => "Cherry", 9 => "Monkey", 12 => "Bird"),
             array(1 => "Dog", 4 => "Cherry",7 => "Bar", 10 => "DoubleBar", 13 => "Cat"),
