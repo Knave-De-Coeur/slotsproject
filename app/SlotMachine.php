@@ -15,7 +15,7 @@ class SlotMachine
     protected $Reels = 5;
     protected $Rows = 3;
     // chose common faces found on slot machines and custom ones to amount to 10
-    protected $Faces = ["Cheery", "Bar", "Double Bar", "Triple Bar", "Diamond", "Seven", "Monkey", "Dog", "Cat", "Bird"];
+    protected $Faces = ["Cherry", "Bar", "Double Bar", "Triple Bar", "Diamond", "Seven", "Monkey", "Dog", "Cat", "Bird"];
     // this will eventually hold the common
     protected $Paylines = array();
     protected $BetAmount;
@@ -78,21 +78,28 @@ class SlotMachine
             array()
         );
 
-        $indexOrder = 0;
 
-        // first we loop through the columns since we're assigning ascending values from top-bottom and then left-right
-        // column
-        for ($y = 0; $y < 3; $y++)
+        // x because we're goig right
+        for ($x = 0; $x < 5; $x++)
         {
-            // row
-            // 5 results are pushed to a an array of columns that column is then pushed to
-            for ($x = 0; $x < 5; $x++)
+            switch ($x) {
+                case 0 : $indexOrder = 0;
+                    break;
+                case 1 : $indexOrder = 3;
+                    break;
+                case 2 : $indexOrder = 6;
+                    break;
+                case 3 : $indexOrder = 9;
+                    break;
+                case 4 : $indexOrder = 12;
+                    break;
+            }
+            // y because we're going down
+            for ($y = 0; $y < 3; $y++)
             {
                 $result = SlotMachineHelper::GenerateAndReturnReelFace($this->Faces);
 
-                $newSlotReel =  $result;
-
-                $slotReels[$y][$x] = $newSlotReel;
+                $slotReels[$y][$indexOrder] = $result;
 
                 $indexOrder ++;
             }
@@ -101,11 +108,11 @@ class SlotMachine
         // tests
         $slotReels2 = array
         (
-            array(0 => "Cherry",3 => "Cherry", 6 => "Cherry", 9 => "Cherry", 12 => "Bird"),
-            array(1 => "Dog", 4 => "Cherry",7 => "Bar", 10 => "DoubleBar", 13 => "Cat"),
+            array(0 => "Cherry",3 => "Cherry", 6 => "Double Bar", 9 => "Cherry", 12 => "Bird"),
+            array(1 => "Dog", 4 => "Double Bar",7 => "Bar", 10 => "Double Bar", 13 => "Cat"),
             array(2 => "Double Bar", 5 => "Cherry", 8 => "Cherry", 11 => "Double Bar", 14 => "Bird"),
         );
-        return $slotReels2;
+        return $slotReels;
 
     }
 
