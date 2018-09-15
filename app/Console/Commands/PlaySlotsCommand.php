@@ -46,7 +46,7 @@ class PlaySlotsCommand extends Command
         $this->table('', $reels);
 
         // get paylines (if any)
-        $this->info('paylines: ');
+        $this->info('Paylines: ');
 
         $slotMachine->setPaylines(SlotMachineHelper::FindAndReturnPaylines($reels));
 
@@ -57,7 +57,11 @@ class PlaySlotsCommand extends Command
         }
         else
         {
-            $this->table(' ', $slotMachine->getPaylines());
+            foreach ($slotMachine->getPaylines() as $matchedSymbols => $payline)
+            {
+                $this->info($matchedSymbols . ' : ' . implode(',', $payline));
+
+            }
             $slotMachine->setTotPayout(SlotMachineHelper::GenerateAmountWon($slotMachine->getBetAmount(), $slotMachine->getPaylines()));
         }
 

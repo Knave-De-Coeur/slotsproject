@@ -101,7 +101,7 @@ class SlotMachine
         // tests
         $slotReels2 = array
         (
-            array(0 => "Cherry",3 => "Cherry", 6 => "Cherry", 9 => "Monkey", 12 => "Bird"),
+            array(0 => "Cherry",3 => "Cherry", 6 => "Cherry", 9 => "Cherry", 12 => "Bird"),
             array(1 => "Dog", 4 => "Cherry",7 => "Bar", 10 => "DoubleBar", 13 => "Cat"),
             array(2 => "Double Bar", 5 => "Cherry", 8 => "Cherry", 11 => "Double Bar", 14 => "Bird"),
         );

@@ -104,9 +104,9 @@ class SlotMachineHelper
     {
         $totalWin = 0;
 
-        foreach ($paylinesFound as $matchSize)
+        foreach ($paylinesFound as $key => $matchSize)
         {
-            switch (count($matchSize))
+            switch ($key)
             {
                 case PayoutStatus::ThreeSybols:
                     $totalWin += $betAmount*0.2;
